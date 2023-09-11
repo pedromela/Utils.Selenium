@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
@@ -15,6 +16,7 @@ namespace Utils.Selenium
         Long,
         Super
     }
+
     public class Driver
     {
         private readonly int TIMEOUT = 15;
@@ -273,6 +275,22 @@ namespace Utils.Selenium
             catch (Exception)
             {
             }
+        }
+
+        protected void ScrollDown()
+        {
+            Actions actions = new Actions(browser);
+            actions.SendKeys(Keys.PageDown).Build().Perform();
+            Delay(DelayType.Micro);
+
+        }
+
+        protected void ScrollUp()
+        {
+            Actions actions = new Actions(browser);
+            actions.SendKeys(Keys.PageUp).Build().Perform();
+            Delay(DelayType.Micro);
+
         }
     }
 }
